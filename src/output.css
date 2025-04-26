@@ -1,4 +1,5 @@
 /*! tailwindcss v4.1.4 | MIT License | https://tailwindcss.com */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -7,8 +8,26 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-white: hsl(0, 0%, 100%);
+    --spacing: 4px;
+    --text-sm: 13px;
+    --text-sm--line-height: 160%;
+    --text-base: 15px;
+    --text-base--line-height: 140%;
+    --text-lg: 20px;
+    --text-lg--line-height: 135%;
+    --text-xl: 36px;
+    --text-xl--line-height: 140%;
+    --font-weight-extralight: 200;
+    --font-weight-semibold: 600;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --color-red: hsl(0, 78%, 62%);
+    --color-cyan: hsl(180, 62%, 55%);
+    --color-orange: hsl(34, 97%, 64%);
+    --color-blue: hsl(212, 86%, 64%);
+    --color-grey-500: hsl(234, 12%, 34%);
+    --font-poppins: 'Poppins', 'sans-serif';
   }
 }
 @layer base {
@@ -163,12 +182,191 @@
   .contents {
     display: contents;
   }
+  .flex {
+    display: flex;
+  }
   .table {
     display: table;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .card-border-color-blue {
+    border-color: var(--color-blue);
+  }
+  .card-border-color-cyan {
+    border-color: var(--color-cyan);
+  }
+  .card-border-color-orange {
+    border-color: var(--color-orange);
+  }
+  .card-border-color-red {
+    border-color: var(--color-red);
+  }
+  .text-grey-500 {
+    color: var(--color-grey-500);
   }
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
+  }
+  .md\:place-self-center {
+    @media (width >= 768px) {
+      place-self: center;
+    }
+  }
+  .md\:max-lg\:col-span-full {
+    @media (width >= 768px) {
+      @media (width < 1440px) {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+  .md\:max-lg\:self-center {
+    @media (width >= 768px) {
+      @media (width < 1440px) {
+        align-self: center;
+      }
+    }
+  }
+  .md\:max-lg\:justify-self-center {
+    @media (width >= 768px) {
+      @media (width < 1440px) {
+        justify-self: center;
+      }
+    }
+  }
+  .lg\:row-span-full {
+    @media (width >= 1440px) {
+      grid-row: 1 / -1;
+    }
+  }
+  .lg\:self-center {
+    @media (width >= 1440px) {
+      align-self: center;
+    }
+  }
+  .lg\:justify-self-center {
+    @media (width >= 1440px) {
+      justify-self: center;
+    }
+  }
+}
+@layer base {
+  html {
+    font-family: var(--font-poppins);
+    color: var(--color-grey-500);
+  }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--spacing) * 15);
+    background-color: var(--color-white);
+    padding-inline: calc(var(--spacing) * 9);
+    padding-top: calc(var(--spacing) * 15);
+  }
+  img {
+    height: 64px;
+    width: 64px;
+  }
+}
+@layer utilities {
+  .text-preset-1 {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+    --tw-tracking: 0.25px;
+    letter-spacing: 0.25px;
+    @media (width < 768px) {
+      font-size: 24px;
+    }
+  }
+  .text-preset-2 {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+    --tw-font-weight: var(--font-weight-extralight);
+    font-weight: var(--font-weight-extralight);
+    --tw-tracking: 0.25px;
+    letter-spacing: 0.25px;
+    @media (width < 768px) {
+      font-size: 24px;
+    }
+  }
+  .text-preset-3 {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .text-preset-4 {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
+  .text-preset-5 {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .flexible-grid-item {
+    @media (width >= 768px) {
+      place-self: center;
+    }
+    @media (width >= 768px) {
+      @media (width < 1440px) {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (width >= 1440px) {
+      grid-row: 1 / -1;
+    }
+  }
+}
+@layer components {
+  .title-content {
+    display: flex;
+    max-width: 540px;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--spacing) * 4);
+    text-align: center;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: calc(var(--spacing) * 8);
+    @media (width >= 768px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (width >= 1440px) {
+      grid-auto-flow: column dense;
+    }
+    @media (width >= 1440px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (width >= 1440px) {
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .card {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: calc(var(--spacing) * 8);
+    border-radius: 8px;
+    border-top-style: var(--tw-border-style);
+    border-top-width: 4px;
+    padding: calc(var(--spacing) * 8);
+    --tw-shadow: 0 15px 30px -11px var(--tw-shadow-color, rgba(131,166,210,0.5));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .card-text-content {
+    display: flex;
+    max-width: 250px;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 1.5);
   }
 }
 @property --tw-outline-style {
@@ -176,10 +374,105 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-outline-style: solid;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-border-style: solid;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
     }
   }
 }

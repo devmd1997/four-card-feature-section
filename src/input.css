@@ -1,1 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
+
+@theme {
+    /* Colors */
+
+    /* Primary */
+    --color-red: hsl(0, 78%, 62%);
+    --color-cyan:  hsl(180, 62%, 55%);
+    --color-orange: hsl(34, 97%, 64%);
+    --color-blue: hsl(212, 86%, 64%);
+
+    /* Neurtral */
+    --color-grey-500: hsl(234, 12%, 34%);
+    --color-grey-400: hsl(212, 6%, 44%);
+    --color-white: hsl(0, 0%, 100%);
+
+    /* Typography */
+
+    /* Font Family */
+    --font-poppins: 'Poppins', 'sans-serif';
+
+    /* Font Sizes */
+    --text-xl: 36px;
+    --text-xl--line-height: 140%;
+    --text-lg: 20px;
+    --text-lg--line-height: 135%;
+    --text-base: 15px;
+    --text-base--line-height: 140%;
+    --text-sm: 13px;
+    --text-sm--line-height: 160%;
+
+    /* Spacing */
+    --spacing: 4px;
+
+    /* Media Breakpoints */
+    --breakpoint-sm: 375px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1440px;
+}
+
+@layer base {
+    html {
+        @apply text-grey-500 font-poppins
+    }
+
+    body {
+        @apply bg-white items-center flex flex-col min-h-screen gap-15 px-9 pt-15
+    }
+
+    img {
+        @apply h-[64px] w-[64px]
+    }
+}
+
+@layer utilities {
+    .text-preset-1 {
+        @apply text-xl max-md:text-[24px] tracking-[0.25px] font-semibold
+    }
+
+    .text-preset-2 {
+        @apply text-xl max-md:text-[24px] tracking-[0.25px] font-extralight
+    }
+
+    .text-preset-3 {
+        @apply text-lg font-semibold
+    }
+
+    .text-preset-4 {
+        @apply text-base 
+    }
+
+    .text-preset-5 {
+        @apply text-sm 
+    }
+
+    .flexible-grid-item {
+        @apply md:max-lg:col-span-full md:place-self-center lg:row-span-full
+    }
+}
+
+@utility card-border-color-*{
+    border-color: --value(--color-*);
+}
+
+@layer components {
+    .title-content {
+        @apply flex flex-col items-center gap-4 text-center max-w-[540px]
+    }
+
+    .card-grid {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 lg:grid-flow-col-dense gap-8
+    }
+
+    .card {
+        @apply flex flex-col w-fit items-end rounded-[8px] border-t-4 shadow-[0_15px_30px_-11px_rgba(131,166,210,0.5)] p-8 gap-8
+    }
+
+    .card-text-content {
+        @apply flex flex-col gap-1.5 max-w-[250px]
+    }
+}
